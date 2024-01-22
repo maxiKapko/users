@@ -1,0 +1,94 @@
+// Fonts
+@import url("https://fonts.bunny.net/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+
+.header_table,
+.data_table {
+    padding: 12px;
+    outline: 1px solid green;
+}
+
+.head-table{
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.edit_user_button,
+.activate-user_button,
+.delete-user_button {
+    width: 100px;
+    height: 24px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.edit_user_button {
+    border: none;
+    background-color: green;
+    color: white;
+}
+
+.delete-user_button {
+    border: none;
+    background-color: red;
+    color: white;
+}
+
+.activate-user_button {
+    border: none;
+    background-color: lightblue;
+    color: white;
+}
+
+.edit_user_button:hover,
+.activate-user_button:hover,
+.delete-user_button:hover {
+    background-color: white;
+}
+
+.edit_user_button:hover {
+    outline: 1px solid green;
+    color: green;
+}
+
+.activate-user_button:hover {
+    outline: 1px solid lightblue;
+    color: blue;
+}
+
+.delete-user_button:hover {
+    outline: 1px solid red;
+    color: red;
+}
+
+.button_create_user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+.create_user_button{
+    width: 150px;
+    height: 48px;
+    font-size: medium;
+    font-weight: bold;
+    border: none;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+
+.create_user_button:hover{
+    outline: 2px solid blue;
+    background-color: white;
+    color: blue;
+}
