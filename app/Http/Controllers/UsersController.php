@@ -5,15 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
     public function index()
     {
+        $folder = 'Files_test';
+
+        // List all files in the 'Files_test' folder
+        $files = Storage::disk('s3')->files($folder);
+
+        // Retrieve the URLs for each file
+        $urls = [];
+        foreach ($files as $file) {
+            $urls[] = Storage::disk('s3')->url($file);
+        }
+
+
         $users = User::all();
 
-        return view('home', ['users' => $users]);
+        return view('home', ['urls' => $urls, 'users' => $users]);
     }
 
     public function create()
@@ -47,10 +60,21 @@ class UsersController extends Controller
         // Create the new user
         User::create($validatedData);
 
+        $folder = 'Files_test';
+
+        // List all files in the 'Files_test' folder
+        $files = Storage::disk('s3')->files($folder);
+
+        // Retrieve the URLs for each file
+        $urls = [];
+        foreach ($files as $file) {
+            $urls[] = Storage::disk('s3')->url($file);
+        }
+
+
         $users = User::all();
 
-        // Redirect to a success page or another appropriate route
-        return view('home', ['users' => $users]);
+        return view('home', ['urls' => $urls, 'users' => $users]);
     }
 
     public function edit($id)
@@ -71,10 +95,21 @@ class UsersController extends Controller
         $user->update($validatedData);
 
         // Fetch the updated list of users
+        $folder = 'Files_test';
+
+        // List all files in the 'Files_test' folder
+        $files = Storage::disk('s3')->files($folder);
+
+        // Retrieve the URLs for each file
+        $urls = [];
+        foreach ($files as $file) {
+            $urls[] = Storage::disk('s3')->url($file);
+        }
+
+
         $users = User::all();
 
-        // Redirect to a success page or another appropriate route
-        return view('home', ['users' => $users]);
+        return view('home', ['urls' => $urls, 'users' => $users]);
     }
 
     public function delete($id)
@@ -84,10 +119,21 @@ class UsersController extends Controller
             $user->inactive = now();
             $user->save();
         }
+        $folder = 'Files_test';
+
+        // List all files in the 'Files_test' folder
+        $files = Storage::disk('s3')->files($folder);
+
+        // Retrieve the URLs for each file
+        $urls = [];
+        foreach ($files as $file) {
+            $urls[] = Storage::disk('s3')->url($file);
+        }
+
+
         $users = User::all();
 
-        // Redirect to a success page or another appropriate route
-        return view('home', ['users' => $users]);
+        return view('home', ['urls' => $urls, 'users' => $users]);
     }
 
     public function activate($id)
@@ -97,9 +143,20 @@ class UsersController extends Controller
             $user->inactive = null;
             $user->save();
         }
+        $folder = 'Files_test';
+
+        // List all files in the 'Files_test' folder
+        $files = Storage::disk('s3')->files($folder);
+
+        // Retrieve the URLs for each file
+        $urls = [];
+        foreach ($files as $file) {
+            $urls[] = Storage::disk('s3')->url($file);
+        }
+
+
         $users = User::all();
 
-        // Redirect to a success page or another appropriate route
-        return view('home', ['users' => $users]);
+        return view('home', ['urls' => $urls, 'users' => $users]);
     }
 }

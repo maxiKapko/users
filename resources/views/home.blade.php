@@ -8,11 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                  
-                    <form method="post" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit">Logout</button>
-                    </form>
+
 
                     <div class="table_users">
                         <table class="users">
@@ -63,6 +59,23 @@
                             <button class="create_user_button">Create User</button>
                         </a>
                     </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="table_files">
+                        <div class="title">Files</div>
+                    </div>
+                    <div class="button_create_user">
+                        <div class="files">
+                            @foreach ($urls as $url)
+                            <a href="{{ $url }}" target="_blank">{{ $url }}</a><br>
+                            @endforeach
+                        </div>
+
+                    </div>
+                        <div class="agregar_file"><a href="{{ route('create.file') }}" class="create_user">
+                            <button class="create_user_button">Upload File</button>
+                        </a></div>
                 </div>
             </div>
         </div>
